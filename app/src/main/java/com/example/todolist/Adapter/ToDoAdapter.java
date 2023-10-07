@@ -1,9 +1,12 @@
 package com.example.todolist.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox; // Import CheckBox
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.todolist.MainActivity;
 import com.example.todolist.Model.ToDoModel;
@@ -13,13 +16,12 @@ import java.util.List;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<ToDoModel> todoList;
-    private MainActivity activity;
 
     public ToDoAdapter(MainActivity activity) {
-        this.activity = activity;
     }
 
     // Correct the method signature
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -38,13 +40,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return todoList != null ? todoList.size() : 0; // Return 0 if todoList is null
+        return todoList.size();
     }
 
     private boolean toBoolean(int n) {
         return n != 0;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setTasks(List<ToDoModel> todoList) {
         this.todoList = todoList;
         notifyDataSetChanged();

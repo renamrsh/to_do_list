@@ -1,5 +1,6 @@
 package com.example.todolist;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         taskList = new ArrayList<>();
 
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tasksRecyclerView.setAdapter(tasksAdapter);
 
         ToDoModel task = new ToDoModel();
-        task.setTask("This is a Test Task");
+        task.setTask("This is a Test Task and here will be info");
         task.setStatus(0);
         task.setId(1);
 
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         taskList.add(task);
         taskList.add(task);
         taskList.add(task);
-        taskList.add(task);
+
 
         tasksAdapter.setTasks(taskList);
     }
