@@ -36,7 +36,7 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="@android:color/holo_purple"
         android:src="@drawable/add"
-        />
+        android:contentDescription="TODO" />
 
 
 
